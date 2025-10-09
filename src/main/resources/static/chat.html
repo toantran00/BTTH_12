@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hỗ trợ khách hàng - Chat Online</title>
+    <link rel="stylesheet" href="/css/chat.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <noscript>
+        <h2>Vui lòng bật JavaScript trong trình duyệt!</h2>
+    </noscript>
+
+    <!-- Trang nhập tên -->
+    <div id="username-page" class="username-page">
+        <div class="username-container">
+            <div class="header">
+                <i class="fas fa-headset"></i>
+                <h1>Hỗ trợ khách hàng</h1>
+                <p>Chúng tôi luôn sẵn sàng hỗ trợ bạn 24/7</p>
+            </div>
+            <form id="usernameForm" class="username-form">
+                <div class="form-group">
+                    <i class="fas fa-user"></i>
+                    <input type="text" id="name" placeholder="Nhập tên của bạn" 
+                           autocomplete="off" class="form-control" autofocus required>
+                </div>
+                <button type="submit" class="btn-enter">
+                    <i class="fas fa-comments"></i>
+                    Bắt đầu chat
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Trang chat -->
+    <div id="chat-page" class="hidden">
+        <div class="chat-container">
+            <div class="chat-header">
+                <div class="header-left">
+                    <i class="fas fa-headset"></i>
+                    <div>
+                        <h3>Hỗ trợ khách hàng</h3>
+                        <span class="status online">Đang hoạt động</span>
+                    </div>
+                </div>
+                <button id="logout-btn" class="logout-btn">
+                    <i class="fas fa-sign-out-alt"></i>
+                    Thoát
+                </button>
+            </div>
+            
+            <div class="connecting">Đang kết nối...</div>
+            
+            <div class="chat-messages" id="messageArea">
+                <!-- Messages sẽ được thêm vào đây -->
+            </div>
+            
+            <form id="messageForm" class="message-form">
+                <div class="input-group">
+                    <input type="text" id="message" placeholder="Nhập tin nhắn..." 
+                           autocomplete="off" class="message-input">
+                    <button type="submit" class="send-btn">
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.6.1/sockjs.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
+    <script src="/js/chat.js"></script>
+</body>
+</html>
