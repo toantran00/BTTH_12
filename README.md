@@ -2,1382 +2,849 @@
 
 <div align="center">
 
-![Pet Shop Banner](https://img.shields.io/badge/Pet%20Shop-Spring%20Boot-brightgreen?style=for-the-badge)
-![Version](https://img.shields.io/badge/version-1.0.0-blue?style=for-the-badge)
-![License](https://img.shields.io/badge/license-MIT-green?style=for-the-badge)
-![Java](https://img.shields.io/badge/Java-8+-orange?style=for-the-badge&logo=java)
-![Spring Boot](https://img.shields.io/badge/Spring%20Boot-2.x-brightgreen?style=for-the-badge&logo=spring)
-
-**Hệ thống quản lý cửa hàng thú cưng hiện đại và toàn diện**
-
-[🚀 Bắt đầu](#-cài-đặt-và-chạy-ứng-dụng) • [📚 Tài liệu](#-hướng-dẫn-sử-dụng-chi-tiết) • [💬 Hỗ trợ](#-hỗ-trợ-và-liên-hệ)
+![Pet Shop Banner](https://img.shields.io/badge/Pet%20Shop-Spring%20Boot-brightgreen)
+![Version](https://img.shields.io/badge/version-1.0.0-blue)
+![License](https://img.shields.io/badge/license-MIT-green)
 
 </div>
 
----
+## 📋 Giới thiệu
 
-## 📋 Tổng quan
+Chào mừng bạn đến với ứng dụng Pet Shop! 🎉
 
-Pet Shop là ứng dụng web quản lý cửa hàng thú cưng được phát triển trên nền tảng **Spring Boot**, mang đến trải nghiệm mua sắm trực tuyến tốt nhất cho những người yêu thú cưng. Hệ thống được thiết kế với kiến trúc phân quyền rõ ràng, bảo mật cao và tích hợp đầy đủ các tính năng thanh toán hiện đại.
+Đây là ứng dụng web quản lý cửa hàng thú cưng hiện đại được phát triển bằng Spring Boot. Hệ thống của chúng tôi được thiết kế để mang lại trải nghiệm mua sắm trực tuyến tốt nhất cho những người yêu thú cưng.
 
-### ✨ Điểm nổi bật
+### 🔑 Các vai trò trong hệ thống:
 
-- 🔐 **Bảo mật cao**: JWT Authentication, BCrypt encryption, 2FA
-- 💳 **Đa phương thức thanh toán**: VNPay, MoMo, COD
-- 📱 **Responsive Design**: Tối ưu trên mọi thiết bị
-- 🚀 **Hiệu năng cao**: Caching, Load balancing, Auto-scaling
-- 📊 **Dashboard thống kê**: Realtime analytics & reporting
-- 🔔 **Thông báo đa kênh**: Email, SMS, Push notification
+| Vai trò | Mô tả |
+|---------|--------|
+| 👤 Khách hàng (USER) | Người dùng cuối, thực hiện mua sắm và quản lý đơn hàng |
+| 👨‍💼 Nhân viên (STAFF) | Xử lý đơn hàng và hỗ trợ khách hàng |
+| 👨‍💻 Quản trị viên (ADMIN) | Quản lý toàn bộ hệ thống và phân quyền |
 
----
+## 📚 Hướng dẫn sử dụng chi tiết theo vai trò
 
-## 🎯 Phân quyền hệ thống
-
-<div align="center">
-
-| Vai trò | Icon | Mô tả | Quyền hạn chính |
-|---------|------|--------|-----------------|
-| **CUSTOMER** | 👤 | Khách hàng | Mua sắm, Quản lý đơn hàng, Đánh giá sản phẩm |
-| **STAFF** | 👨‍💼 | Nhân viên | Xử lý đơn hàng, Hỗ trợ khách hàng, Cập nhật kho |
-| **ADMIN** | 👨‍💻 | Quản trị viên | Toàn quyền quản lý hệ thống |
-
-</div>
-
----
-
-## 🛠️ Công nghệ sử dụng
-
-<div align="center">
-
-### Backend
-![Spring Boot](https://img.shields.io/badge/Spring_Boot-6DB33F?style=flat-square&logo=spring-boot&logoColor=white)
-![Spring Security](https://img.shields.io/badge/Spring_Security-6DB33F?style=flat-square&logo=spring-security&logoColor=white)
-![JWT](https://img.shields.io/badge/JWT-000000?style=flat-square&logo=json-web-tokens&logoColor=white)
-![Hibernate](https://img.shields.io/badge/Hibernate-59666C?style=flat-square&logo=hibernate&logoColor=white)
-
-### Database & Cache
-![SQL Server](https://img.shields.io/badge/SQL_Server-CC2927?style=flat-square&logo=microsoft-sql-server&logoColor=white)
-![Redis](https://img.shields.io/badge/Redis-DC382D?style=flat-square&logo=redis&logoColor=white)
-
-### Payment Gateway
-![VNPay](https://img.shields.io/badge/VNPay-0066CC?style=flat-square)
-![MoMo](https://img.shields.io/badge/MoMo-A50064?style=flat-square)
-
-### Tools & DevOps
-![Maven](https://img.shields.io/badge/Maven-C71A36?style=flat-square&logo=apache-maven&logoColor=white)
-![Git](https://img.shields.io/badge/Git-F05032?style=flat-square&logo=git&logoColor=white)
-![Docker](https://img.shields.io/badge/Docker-2496ED?style=flat-square&logo=docker&logoColor=white)
-
-</div>
-
----
-
-## 📦 Yêu cầu hệ thống
-
-```yaml
-Runtime:
-  - Java JDK: >= 8
-  - Maven: >= 3.6.0
-  - SQL Server: >= 2016
-  
-Development:
-  - IDE: IntelliJ IDEA / Eclipse
-  - RAM: >= 4GB
-  - Disk: >= 10GB free space
-  
-Optional:
-  - Docker: >= 20.10
-  - Redis: >= 6.0
-```
-
----
-
-## 🚀 Cài đặt và chạy ứng dụng
-
-### 📥 Bước 1: Clone Repository
-
-```bash
-git clone https://github.com/your-repo/pet-shop.git
-cd pet-shop
-```
-
-### 🗄️ Bước 2: Cấu hình Database
-
-**Tạo database trong SQL Server:**
-```sql
-CREATE DATABASE DTA_PET;
-```
-
-**Cập nhật `application.properties`:**
-```properties
-# Database Configuration
-spring.datasource.url=jdbc:sqlserver://localhost:1433;databaseName=DTA_PET
-spring.datasource.username=sa
-spring.datasource.password=your_password
-spring.datasource.driver-class-name=com.microsoft.sqlserver.jdbc.SQLServerDriver
-
-# JPA Configuration
-spring.jpa.hibernate.ddl-auto=update
-spring.jpa.show-sql=true
-spring.jpa.properties.hibernate.format_sql=true
-
-# File Upload
-spring.servlet.multipart.max-file-size=10MB
-spring.servlet.multipart.max-request-size=10MB
-
-# Email Configuration
-spring.mail.host=smtp.gmail.com
-spring.mail.port=587
-spring.mail.username=your-email@gmail.com
-spring.mail.password=your-app-password
-spring.mail.properties.mail.smtp.auth=true
-spring.mail.properties.mail.smtp.starttls.enable=true
-```
-
-### ▶️ Bước 3: Chạy ứng dụng
-
-**Sử dụng Maven:**
-```bash
-mvn clean install
-mvn spring-boot:run
-```
-
-**Hoặc chạy file JAR:**
-```bash
-java -jar target/pet-shop-1.0.0.jar
-```
-
-### 🌐 Bước 4: Truy cập ứng dụng
-
-- **Frontend**: http://localhost:8080
-- **Admin Panel**: http://localhost:8080/admin
-- **API Documentation**: http://localhost:8080/swagger-ui.html
-
----
-
-## 📚 Hướng dẫn sử dụng chi tiết
-
-### 🛍️ Dành cho KHÁCH HÀNG
+### 🛍️ Khách hàng (USER)
 
 <details>
-<summary><b>🔐 Đăng ký & Đăng nhập</b></summary>
+<summary><b>📝 Xem hướng dẫn chi tiết cho khách hàng</b></summary>
 
-#### Quy trình đăng ký:
-
+#### 🔐 Đăng ký tài khoản
 ```mermaid
-graph LR
-    A[Truy cập /register] --> B[Điền thông tin]
-    B --> C[Gửi OTP qua email]
-    C --> D[Xác thực OTP]
-    D --> E[Tài khoản active]
+graph TD
+    A[Truy cập trang chủ] --> B[Click nút Đăng ký]
+    B --> C[Điền thông tin]
+    C --> D[Click Đăng ký]
+    D --> E[Nhận mã OTP qua email]
+    E --> F[Xác thực tài khoản]
 ```
 
-**Thông tin cần thiết:**
-- 👤 Họ và tên
-- 📧 Email (dùng để đăng nhập)
-- 📱 Số điện thoại
-- 🔒 Mật khẩu (tối thiểu 8 ký tự)
+> 💡 **Thông tin cần điền:**
+> - 👤 Họ và tên
+> - 📧 Email (dùng để đăng nhập)
+> - 📱 Số điện thoại
+> - 🔒 Mật khẩu
+> - 🔐 Xác nhận mật khẩu
 
-#### Đăng nhập:
-1. Truy cập `/login`
-2. Nhập email và mật khẩu
-3. ✅ Tích "Ghi nhớ đăng nhập" (tùy chọn)
-4. Click **Đăng nhập**
+#### 🔑 Đăng nhập
+
+<div align="center">
+<table>
+<tr>
+<th>Bước</th>
+<th>Hành động</th>
+</tr>
+<tr>
+<td>1️⃣</td>
+<td>Click vào nút "Đăng nhập"</td>
+</tr>
+<tr>
+<td>2️⃣</td>
+<td>Nhập email và mật khẩu</td>
+</tr>
+<tr>
+<td>3️⃣</td>
+<td>Tùy chọn "Ghi nhớ đăng nhập"</td>
+</tr>
+<tr>
+<td>4️⃣</td>
+<td>Click "Đăng nhập"</td>
+</tr>
+</table>
+</div>
+
+#### 👤 Quản lý thông tin cá nhân
+🔄 **Các thao tác chính:**
+
+<div align="center">
+
+| Tính năng | Mô tả | Icon |
+|-----------|--------|------|
+| Thông tin cơ bản | Cập nhật họ tên, số điện thoại, ngày sinh | 📝 |
+| Đổi mật khẩu | Thay đổi mật khẩu đăng nhập | 🔒 |
+| Cập nhật avatar | Tải lên ảnh đại diện mới | 🖼️ |
+| Địa chỉ giao hàng | Thêm/sửa địa chỉ nhận hàng | 📍 |
+
+</div>
+
+#### 🛒 Mua sắm
+
+<details>
+<summary><b>🔍 Tìm kiếm sản phẩm</b></summary>
+
+- 🏠 Lướt trang chủ
+- 🔎 Sử dụng thanh tìm kiếm thông minh
+- 📑 Lọc theo danh mục
+- ⚡ Sắp xếp linh hoạt (giá/tên/mới nhất)
 
 </details>
 
 <details>
-<summary><b>🛒 Mua sắm & Thanh toán</b></summary>
+<summary><b>📦 Xem chi tiết sản phẩm</b></summary>
 
-#### Quy trình mua hàng:
+- 🔍 Xem thông tin chi tiết
+- 💰 Kiểm tra giá và khuyến mãi
+- 📊 Xem số lượng còn trong kho
+- ⭐ Đọc đánh giá từ khách hàng
+
+</details>
+
+<details>
+<summary><b>🛍️ Thêm vào giỏ hàng</b></summary>
+
+```mermaid
+graph LR
+    A[Chọn số lượng] -->|Click| B[Thêm vào giỏ]
+    B --> C[Thông báo xác nhận]
+    C -->|Tiếp tục mua sắm| A
+    C -->|Đến giỏ hàng| D[Xem giỏ hàng]
+```
+
+</details>
+
+#### 🛒 Giỏ hàng
+
+<div align="center">
+
+| Chức năng | Thao tác | Icon |
+|-----------|----------|------|
+| Xem giỏ hàng | Danh sách sản phẩm đã chọn | 📋 |
+| Cập nhật số lượng | Tăng/giảm số lượng sản phẩm | ⚖️ |
+| Xóa sản phẩm | Loại bỏ sản phẩm khỏi giỏ | 🗑️ |
+| Tính tổng tiền | Tự động tính tổng và khuyến mãi | 💰 |
+
+</div>
+
+#### 💳 Thanh toán
+
+<div align="center">
+
+```mermaid
+graph TD
+    A[Bắt đầu thanh toán] --> B{Chọn phương thức}
+    B -->|COD| C[Thanh toán khi nhận hàng]
+    B -->|VNPay| D[Thanh toán qua VNPay]
+    B -->|MoMo| E[Thanh toán qua MoMo]
+    C --> F[Xác nhận đơn hàng]
+    D --> G[Chuyển cổng thanh toán]
+    G --> H[Nhập thông tin thẻ]
+    H --> I[Xác nhận OTP]
+    E --> J[Quét mã QR]
+    J --> K[Xác nhận trên ứng dụng]
+    I --> F
+    K --> F
+    F --> L[Hoàn tất đặt hàng]
+```
+
+</div>
+
+> 💡 **Lưu ý về thanh toán:**
+> - 🏠 **COD**: Thanh toán khi nhận hàng tại địa chỉ
+> - 💳 **VNPay**: Thanh toán bằng thẻ ATM/Credit Card
+> - 📱 **MoMo**: Thanh toán qua ví điện tử MoMo
+
+#### 📦 Quản lý đơn hàng
+
+<div align="center">
+
+| Trạng thái | Mô tả | Icon |
+|------------|-------|------|
+| Chờ xác nhận | Đơn hàng mới tạo | ⏳ |
+| Đang xử lý | Đang chuẩn bị hàng | 🔄 |
+| Đang giao | Đang vận chuyển | 🚚 |
+| Đã giao | Giao hàng thành công | ✅ |
+| Đã hủy | Đơn hàng bị hủy | ❌ |
+
+</div>
+
+<details>
+<summary><b>📋 Chi tiết đơn hàng</b></summary>
+
+- 📝 Xem thông tin sản phẩm
+- 🔍 Theo dõi trạng thái realtime
+- 📅 Xem lịch sử giao hàng
+- 💬 Nhắn tin với shop
+
+</details>
+
+<details>
+<summary><b>❌ Hủy đơn hàng</b></summary>
+
+> ⚠️ **Lưu ý**: Chỉ có thể hủy đơn khi:
+> - 🕒 Đơn hàng chưa được xử lý
+> - 📝 Có lý do hủy hợp lệ
+> - ⏰ Trong thời gian cho phép
+
+</details>
+
+<details>
+<summary><b>⭐ Đánh giá sản phẩm</b></summary>
+
+```mermaid
+graph TD
+    A[Nhận hàng thành công] --> B[Vào mục Đánh giá]
+    B --> C[Chọn số sao 1-5]
+    C --> D[Viết nhận xét]
+    D --> E[Đăng ảnh sản phẩm]
+    E --> F[Gửi đánh giá]
+```
+
+</details>
+
+</details>
+
+### 👨‍💼 Nhân viên (STAFF)
+
+<details>
+<summary><b>📱 Xem hướng dẫn chi tiết cho nhân viên</b></summary>
+
+#### 🔐 Truy cập hệ thống
+
+<div align="center">
+
+```mermaid
+graph LR
+    A[Truy cập trang admin] -->|Đăng nhập| B[Xác thực]
+    B -->|Thành công| C[Dashboard]
+    B -->|Thất bại| D[Thông báo lỗi]
+    D --> A
+```
+
+</div>
+
+#### 📦 Quản lý đơn hàng
+<div align="center">
+
+| Chức năng | Thao tác | Mô tả |
+|-----------|----------|--------|
+| 📋 Xem danh sách | Lọc & Tìm kiếm | Quản lý đơn hàng theo trạng thái, mã đơn, ngày |
+| ✅ Xác nhận đơn | Xử lý đơn mới | Kiểm tra và xác nhận thông tin đơn hàng |
+| 🖨️ In hóa đơn | Xuất hóa đơn | Tạo hóa đơn PDF cho đơn hàng |
+| 📝 Ghi chú | Thêm ghi chú | Cập nhật thông tin bổ sung cho đơn hàng |
+
+</div>
+
+#### 🚚 Quản lý giao hàng
+
+```mermaid
+graph TD
+    A[Đơn đã xác nhận] --> B[Cập nhật vận chuyển]
+    B --> C{Trạng thái}
+    C -->|Đang giao| D[Cập nhật thông tin shipper]
+    C -->|Đã giao| E[Xác nhận hoàn thành]
+    C -->|Hoàn hàng| F[Xử lý hoàn trả]
+    D --> G[Theo dõi realtime]
+    E --> H[Hoàn tất đơn hàng]
+    F --> I[Cập nhật kho]
+```
+
+#### 📦 Quản lý sản phẩm
+
+<div align="center">
+
+| Tính năng | Icon | Mô tả |
+|-----------|------|--------|
+| Xem kho | 📊 | Kiểm tra tồn kho realtime |
+| Lọc sản phẩm | 🔍 | Tìm kiếm theo danh mục |
+| Cập nhật | ✏️ | Sửa thông tin sản phẩm |
+| Hình ảnh | 🖼️ | Quản lý ảnh sản phẩm |
+
+</div>
+
+<details>
+<summary><b>📝 Quy trình cập nhật sản phẩm</b></summary>
+
+```mermaid
+graph LR
+    A[Chọn sản phẩm] --> B[Cập nhật thông tin]
+    B --> C[Cập nhật giá]
+    C --> D[Cập nhật số lượng]
+    D --> E[Quản lý ảnh]
+    E --> F[Lưu thay đổi]
+```
+
+</details>
+
+#### 💬 Hỗ trợ khách hàng
+<div align="center">
+
+| Nhiệm vụ | Thao tác | Trạng thái |
+|----------|----------|------------|
+| 📩 Tiếp nhận yêu cầu | Kiểm tra & phân loại | 🆕 Mới |
+| 💬 Trả lời khách hàng | Chat trực tiếp/Email | 🔄 Đang xử lý |
+| ✅ Xác nhận giải quyết | Cập nhật trạng thái | ✔️ Hoàn thành |
+
+</div>
+
+> 💡 **Mẹo hỗ trợ khách hàng:**
+> - ⚡ Phản hồi nhanh trong 5 phút
+> - 😊 Giao tiếp thân thiện, chuyên nghiệp
+> - 📝 Ghi chú lại các vấn đề quan trọng
+> - 📊 Theo dõi mức độ hài lòng
+
+</details>
+
+### 👨‍💻 Quản trị viên (ADMIN)
+
+<details>
+<summary><b>⚙️ Xem hướng dẫn chi tiết cho quản trị viên</b></summary>
+
+#### 📊 Dashboard & Thống kê
+
+<div align="center">
+
+```mermaid
+graph TD
+    A[Dashboard] --> B[Thống kê doanh thu]
+    A --> C[Quản lý đơn hàng]
+    A --> D[Phân tích bán hàng]
+    B --> E[Theo ngày/tháng/năm]
+    C --> F[Tổng số đơn hàng]
+    D --> G[Top sản phẩm]
+```
+
+</div>
+
+#### ⚙️ Cấu hình hệ thống
+
+<div align="center">
+
+| Cấu hình | Chức năng | Icon |
+|----------|-----------|------|
+| Thông tin shop | Cập nhật thông tin cửa hàng | 🏪 |
+| Email | Cấu hình SMTP, mẫu email | 📧 |
+| Thanh toán | Cài đặt VNPay, MoMo | 💳 |
+| Giao diện | Quản lý banner, slider | 🎨 |
+
+</div>
+
+#### 📁 Quản lý danh mục
+
+<div align="center">
+
+| Chức năng | Mô tả | Thao tác nhanh |
+|-----------|--------|----------------|
+| ➕ Thêm mới | Tạo danh mục mới | `Alt + N` |
+| 📝 Chỉnh sửa | Cập nhật thông tin | `Alt + E` |
+| 🗑️ Xóa | Xóa danh mục | `Alt + D` |
+| 📊 Sắp xếp | Điều chỉnh thứ tự | `Alt + S` |
+
+</div>
+
+```mermaid
+graph TD
+    A[Danh mục gốc] --> B[Danh mục con 1]
+    A --> C[Danh mục con 2]
+    B --> D[Danh mục cháu 1.1]
+    B --> E[Danh mục cháu 1.2]
+    C --> F[Danh mục cháu 2.1]
+```
+
+#### 🛍️ Quản lý sản phẩm (Full quyền)
+
+<details>
+<summary><b>✨ Thêm sản phẩm mới</b></summary>
+
+<div align="center">
+
+| Bước | Thông tin | Ghi chú |
+|------|-----------|----------|
+| 1️⃣ | Thông tin cơ bản | Tên, mã, danh mục |
+| 2️⃣ | Giá & Khuyến mãi | Giá bán, giá KM |
+| 3️⃣ | Hình ảnh | Tối đa 8 ảnh |
+| 4️⃣ | SEO | Meta title, description |
+
+</div>
+
+</details>
+
+<details>
+<summary><b>📦 Quản lý kho</b></summary>
+
+```mermaid
+graph LR
+    A[Nhập hàng] --> B[Cập nhật kho]
+    B --> C[Kiểm kho]
+    C --> D[Báo cáo tồn]
+    D --> E[Cảnh báo hết hàng]
+```
+
+</details>
+
+<details>
+<summary><b>💰 Quản lý giá & Khuyến mãi</b></summary>
+
+| Tính năng | Mô tả | Lịch trình |
+|-----------|--------|------------|
+| Giá cơ bản | Giá niêm yết | 24/7 |
+| Flash Sale | Giảm giá sốc | Theo giờ |
+| Combo | Mua nhiều giảm nhiều | Theo ngày |
+| Mùa vụ | Khuyến mãi theo mùa | Theo tháng |
+
+</details>
+
+#### 👥 Quản lý người dùng
+
+<details>
+<summary><b>👤 Quản lý khách hàng</b></summary>
+
+<div align="center">
+
+| Chức năng | Thao tác | Phím tắt |
+|-----------|----------|----------|
+| 👀 Xem danh sách | Lọc & Tìm kiếm | `Ctrl + F` |
+| 🔒 Khóa tài khoản | Tạm khóa/Vĩnh viễn | `Ctrl + L` |
+| 🔑 Reset mật khẩu | Gửi email reset | `Ctrl + R` |
+| 📊 Thống kê | Phân tích hành vi | `Ctrl + A` |
+
+</div>
+
+</details>
+
+<details>
+<summary><b>👨‍💼 Quản lý nhân viên</b></summary>
+
+```mermaid
+graph TD
+    A[Thêm nhân viên mới] --> B[Cấp tài khoản]
+    B --> C[Phân quyền]
+    C --> D[Theo dõi hoạt động]
+    D --> E[Đánh giá hiệu suất]
+```
+
+#### 🔐 Phân quyền chi tiết
+
+| Module | STAFF | ADMIN |
+|--------|-------|-------|
+| Đơn hàng | ✅ | ✅ |
+| Sản phẩm | ⚡ | ✅ |
+| Khách hàng | ⚡ | ✅ |
+| Tài chính | ❌ | ✅ |
+| Cấu hình | ❌ | ✅ |
+
+> ✅ Full quyền | ⚡ Hạn chế | ❌ Không có quyền
+
+</details>
+
+#### 💰 Quản lý tài chính
+
+<div align="center">
+
+| Báo cáo | Thời gian | Biểu đồ |
+|---------|-----------|----------|
+| 📈 Doanh thu | Ngày/Tuần/Tháng | Line chart |
+| 📊 Sản phẩm | Top bán chạy | Bar chart |
+| 💳 Thanh toán | Phương thức | Pie chart |
+| 🔄 Hoàn tiền | Theo trạng thái | Status chart |
+
+</div>
+
+<details>
+<summary><b>💹 Phân tích tài chính</b></summary>
+
+```mermaid
+graph LR
+    A[Thu thập dữ liệu] --> B[Phân tích]
+    B --> C[Báo cáo]
+    C --> D[Dự báo]
+    D --> E[Đề xuất]
+```
+
+#### 📊 Các chỉ số quan trọng (KPIs)
+
+| Chỉ số | Đơn vị | Xu hướng |
+|--------|---------|----------|
+| Doanh thu | VNĐ | 📈 |
+| Lợi nhuận | % | 📊 |
+| Đơn hàng | Số lượng | 📋 |
+| Khách hàng | Tăng trưởng | 👥 |
+
+</details>
+
+</details>
+
+## Yêu cầu hệ thống
+- Java Development Kit (JDK) 8 trở lên
+- Maven
+- SQL Server
+- IDE (khuyến nghị sử dụng Eclipse hoặc IntelliJ IDEA)
+
+## Cài đặt và Chạy ứng dụng
+
+### 1. Cấu hình Database
+1. Tạo database `DTA_PET` trong SQL Server
+2. Cập nhật thông tin kết nối database trong file `application.properties`:
+   ```properties
+   spring.datasource.url=jdbc:sqlserver://[YOUR_SERVER_NAME]:1433;databaseName=DTA_PET
+   spring.datasource.username=sa
+   spring.datasource.password=123456
+   ```
+
+### 2. Chạy ứng dụng
+1. Clone repository về máy
+2. Mở terminal/command prompt tại thư mục dự án
+3. Chạy lệnh: `mvn spring-boot:run`
+4. Truy cập ứng dụng tại: `http://localhost:8080`
+
+## Các chức năng chính
+
+### 1. Quản lý người dùng
+- **Đăng ký tài khoản**: 
+  - Truy cập `/register`
+  - Điền thông tin cá nhân
+  - Xác thực email thông qua mã OTP được gửi đến email đăng ký
+
+- **Đăng nhập**: 
+  - Truy cập `/login`
+  - Đăng nhập bằng email và mật khẩu
+  - Hệ thống sử dụng JWT token để xác thực
+
+### 2. Quản lý sản phẩm
+- Xem danh sách sản phẩm
+- Tìm kiếm sản phẩm
+- Lọc sản phẩm theo danh mục
+- Xem chi tiết sản phẩm
+
+### 3. Giỏ hàng và Đặt hàng
+- Thêm sản phẩm vào giỏ hàng
+- Cập nhật số lượng sản phẩm
+- Xóa sản phẩm khỏi giỏ hàng
+- Đặt hàng và chọn phương thức thanh toán
+
+### 4. Thanh toán
+#### Thanh toán qua VNPay
+1. Chọn phương thức thanh toán VNPay
+2. Điền thông tin thanh toán
+3. Được chuyển đến cổng thanh toán VNPay
+4. Hoàn tất thanh toán và chờ redirect về trang callback
+
+#### Thanh toán qua MoMo
+1. Chọn phương thức thanh toán MoMo
+2. Quét mã QR hoặc sử dụng ứng dụng MoMo
+3. Xác nhận thanh toán trên ứng dụng MoMo
+4. Chờ callback để xác nhận trạng thái thanh toán
+
+### 5. Quản lý đơn hàng
+- Xem lịch sử đơn hàng
+- Theo dõi trạng thái đơn hàng
+- Hủy đơn hàng (nếu chưa xử lý)
+
+### 6. Tính năng Admin
+- Quản lý danh mục sản phẩm
+- Quản lý sản phẩm (thêm, sửa, xóa)
+- Quản lý đơn hàng
+- Quản lý người dùng
+- Xem thống kê và báo cáo
+
+## Upload Files
+- Hỗ trợ upload ảnh sản phẩm
+- Giới hạn kích thước file: 10MB
+- Đường dẫn lưu trữ ảnh: `uploads/images/`
+
+## Cấu hình Email
+Ứng dụng sử dụng Gmail SMTP để gửi email:
+- Host: smtp.gmail.com
+- Port: 587
+- Yêu cầu xác thực: Có
+- Sử dụng TLS: Có
+
+## Xử lý lỗi thường gặp
+
+### 1. Lỗi kết nối database
+- Kiểm tra SQL Server đã chạy chưa
+- Xác nhận thông tin kết nối trong application.properties
+- Đảm bảo database DTA_PET đã được tạo
+
+### 2. Lỗi thanh toán
+- Kiểm tra cấu hình VNPay/MoMo trong application.properties
+- Đảm bảo đường dẫn callback đúng
+- Kiểm tra log để xem chi tiết lỗi
+
+### 3. Lỗi upload file
+- Kiểm tra thư mục uploads có tồn tại và có quyền ghi
+- Đảm bảo kích thước file không vượt quá 10MB
+
+## 🔄 Quy trình làm việc và bảo mật
+
+### 📦 Quy trình xử lý đơn hàng
+
+<div align="center">
+
+```mermaid
+stateDiagram-v2
+    [*] --> NEW: Đặt hàng
+    NEW --> CONFIRMED: Xác nhận
+    CONFIRMED --> PROCESSING: Chuẩn bị
+    PROCESSING --> SHIPPING: Giao hàng
+    SHIPPING --> DELIVERED: Thành công
+    SHIPPING --> FAILED: Thất bại
+    DELIVERED --> COMPLETED: Xác nhận
+    FAILED --> CANCELLED: Hủy đơn
+```
+
+</div>
+
+<details>
+<summary><b>📋 Chi tiết các trạng thái</b></summary>
+
+| Trạng thái | Mô tả | Thao tác |
+|------------|-------|----------|
+| 🆕 NEW | Đơn hàng mới | Chờ xác nhận |
+| ✅ CONFIRMED | Đã xác nhận | Chuẩn bị hàng |
+| 🔄 PROCESSING | Đang xử lý | Đóng gói |
+| 🚚 SHIPPING | Đang giao | Theo dõi |
+| 📦 DELIVERED | Đã giao | Chờ xác nhận |
+| ✨ COMPLETED | Hoàn tất | Đánh giá |
+| ❌ FAILED | Giao thất bại | Xử lý lại |
+| 🚫 CANCELLED | Đã hủy | Hoàn tiền |
+
+</details>
+
+> 💡 **Tự động hóa:**
+> - 🔄 Tự động cập nhật kho
+> - 📧 Gửi email thông báo
+> - 📱 Push notification
+> - 💰 Xử lý hoàn tiền
+
+### ⚠️ Quy trình xử lý khiếu nại
+
+<div align="center">
 
 ```mermaid
 sequenceDiagram
     participant C as Khách hàng
-    participant S as Hệ thống
-    participant P as Payment Gateway
+    participant S as Nhân viên
+    participant A as Admin
     
-    C->>S: Thêm sản phẩm vào giỏ
-    C->>S: Xem giỏ hàng
-    C->>S: Đặt hàng
-    S->>C: Chọn phương thức thanh toán
-    
-    alt VNPay/MoMo
-        C->>P: Chuyển đến cổng thanh toán
-        P->>C: Xác thực thanh toán
-        P->>S: Callback kết quả
-    else COD
-        S->>S: Xác nhận đơn hàng
+    C->>S: Tạo khiếu nại
+    Note over C,S: Đính kèm hình ảnh & lý do
+    S->>S: Kiểm tra thông tin
+    S->>A: Đề xuất giải pháp
+    A->>S: Phê duyệt/Từ chối
+    S->>C: Phản hồi khách hàng
+    alt Đồng ý hoàn tiền
+        A->>S: Duyệt hoàn tiền
+        S->>C: Xử lý hoàn tiền
+    else Từ chối hoàn tiền
+        S->>C: Giải thích lý do
     end
-    
-    S->>C: Thông báo đặt hàng thành công
 ```
 
-#### Phương thức thanh toán:
+</div>
 
-| Phương thức | Icon | Mô tả | Thời gian xử lý |
-|-------------|------|--------|-----------------|
-| **COD** | 💵 | Thanh toán khi nhận hàng | Tức thì |
-| **VNPay** | 💳 | Thẻ ATM/Credit Card | 1-2 phút |
-| **MoMo** | 📱 | Ví điện tử MoMo | 1-2 phút |
+### 🔒 Bảo mật và quyền hạn
+
+<details>
+<summary><b>🛡️ Hệ thống bảo mật</b></summary>
+
+<div align="center">
+
+| Lớp bảo mật | Công nghệ | Mô tả |
+|-------------|-----------|--------|
+| 🔐 Xác thực | JWT + OAuth2 | Quản lý phiên đăng nhập |
+| 🔒 Mã hóa | BCrypt | Bảo vệ mật khẩu |
+| 🛡️ API | Spring Security | Kiểm soát truy cập |
+| 📱 2FA | Google Auth | Xác thực 2 lớp |
+
+</div>
 
 </details>
 
 <details>
-<summary><b>📦 Quản lý đơn hàng</b></summary>
-
-#### Vòng đời đơn hàng:
-
-```mermaid
-stateDiagram-v2
-    [*] --> Chờ_xác_nhận
-    Chờ_xác_nhận --> Đang_xử_lý: STAFF xác nhận
-    Đang_xử_lý --> Đang_giao: Bắt đầu vận chuyển
-    Đang_giao --> Đã_giao: Giao thành công
-    Đã_giao --> Hoàn_thành: Khách xác nhận
-    Chờ_xác_nhận --> Đã_hủy: Khách hủy
-    Đang_xử_lý --> Đã_hủy: Admin hủy
-```
-
-#### Các tính năng:
-- 📋 Xem lịch sử đơn hàng
-- 🔍 Theo dõi trạng thái realtime
-- ❌ Hủy đơn (khi chưa xử lý)
-- ⭐ Đánh giá sản phẩm (sau khi nhận hàng)
-- 📞 Liên hệ hỗ trợ
-
-</details>
-
-### 👨‍💼 Dành cho NHÂN VIÊN
-
-<details>
-<summary><b>📊 Quản lý đơn hàng</b></summary>
-
-#### Nhiệm vụ chính:
-
-| Chức năng | Mô tả | Phím tắt |
-|-----------|--------|----------|
-| ✅ Xác nhận đơn | Kiểm tra & xác nhận đơn mới | `Ctrl + Y` |
-| 📦 Chuẩn bị hàng | Đóng gói & chuẩn bị vận chuyển | `Ctrl + P` |
-| 🚚 Cập nhật giao hàng | Theo dõi & cập nhật trạng thái | `Ctrl + U` |
-| 🖨️ In hóa đơn | Xuất hóa đơn PDF | `Ctrl + I` |
-| 📝 Ghi chú | Thêm ghi chú cho đơn hàng | `Ctrl + N` |
-
-#### Quy trình xử lý:
-
-```mermaid
-flowchart TD
-    A[Đơn hàng mới] --> B{Kiểm tra hàng}
-    B -->|Đủ hàng| C[Xác nhận đơn]
-    B -->|Hết hàng| D[Liên hệ khách hàng]
-    C --> E[Chuẩn bị hàng]
-    E --> F[Bàn giao vận chuyển]
-    F --> G[Cập nhật trạng thái]
-    D --> H[Hủy/Đổi sản phẩm]
-```
-
-</details>
-
-<details>
-<summary><b>💬 Hỗ trợ khách hàng</b></summary>
-
-#### Kênh hỗ trợ:
-
-- 📧 **Email**: Trả lời câu hỏi qua email
-- 💬 **Live Chat**: Chat trực tiếp trên website
-- 📱 **Hotline**: Tư vấn qua điện thoại
-- 🔄 **Khiếu nại**: Xử lý khiếu nại & hoàn tiền
-
-#### SLA (Service Level Agreement):
-
-| Loại yêu cầu | Thời gian phản hồi | Thời gian giải quyết |
-|--------------|-------------------|---------------------|
-| Khẩn cấp | ⚡ 15 phút | 2 giờ |
-| Thông thường | 🔄 2 giờ | 24 giờ |
-| Góp ý | 📝 24 giờ | 3-5 ngày |
-
-</details>
-
-### 👨‍💻 Dành cho QUẢN TRỊ VIÊN
-
-<details>
-<summary><b>📊 Dashboard & Thống kê</b></summary>
-
-#### Các chỉ số quan trọng (KPIs):
+<summary><b>🚦 Kiểm soát truy cập</b></summary>
 
 ```mermaid
 graph TD
-    A[Dashboard] --> B[Doanh thu]
-    A --> C[Đơn hàng]
-    A --> D[Khách hàng]
-    A --> E[Sản phẩm]
-    
-    B --> B1[Hôm nay]
-    B --> B2[Tháng này]
-    B --> B3[Năm nay]
-    
-    C --> C1[Chờ xử lý]
-    C --> C2[Đang giao]
-    C --> C3[Hoàn thành]
-    
-    D --> D1[Mới]
-    D --> D2[Hoạt động]
-    D --> D3[VIP]
-    
-    E --> E1[Bán chạy]
-    E --> E2[Tồn kho]
-    E --> E3[Hết hàng]
+    A[Request] --> B{JWT Valid?}
+    B -->|Yes| C{Role Check}
+    B -->|No| D[Reject]
+    C -->|Pass| E[Allow]
+    C -->|Fail| D
 ```
 
-#### Báo cáo:
+#### 🔑 Phân quyền chi tiết
 
-- 📈 **Doanh thu**: Theo ngày/tuần/tháng/năm
-- 📊 **Sản phẩm**: Top bán chạy, tồn kho
-- 💳 **Thanh toán**: Phân tích theo phương thức
-- 👥 **Khách hàng**: Phân tích hành vi mua hàng
+| Tài nguyên | Anonymous | User | Staff | Admin |
+|------------|-----------|------|--------|--------|
+| Xem sản phẩm | ✅ | ✅ | ✅ | ✅ |
+| Đặt hàng | ❌ | ✅ | ✅ | ✅ |
+| Quản lý đơn | ❌ | ⚡ | ✅ | ✅ |
+| Cấu hình | ❌ | ❌ | ⚡ | ✅ |
 
+> ✅ Được phép | ⚡ Hạn chế | ❌ Không được phép
+
+</details>
+
+#### 3.1. Xác thực và phân quyền
+- Sử dụng JWT (JSON Web Token):
+  - Token có hiệu lực 24 giờ
+  - Refresh token có hiệu lực 7 ngày
+  - Tự động gia hạn khi hoạt động
+- Phân quyền chi tiết:
+  - USER: Quyền cơ bản của khách hàng
+  - STAFF: Quyền xử lý đơn và hỗ trợ
+  - ADMIN: Toàn quyền quản trị hệ thống
+
+#### 3.2. Bảo mật thông tin
+- Mã hóa mật khẩu bằng BCrypt
+- Mã hóa thông tin thanh toán
+- HTTPS cho mọi giao tiếp
+- Giới hạn số lần đăng nhập sai
+- Xác thực 2 yếu tố cho admin
+
+#### 3.3. Bảo vệ API
+- CORS được cấu hình chặt chẽ
+- Rate limiting cho API
+- Validation cho mọi đầu vào
+- Logging mọi hoạt động quan trọng
+
+#### 3.4. Quy trình backup
+- Backup database tự động mỗi ngày
+- Backup hình ảnh định kỳ
+- Lưu trữ log 30 ngày
+- Khôi phục dữ liệu khi cần
+
+### 4. Xử lý lỗi và sự cố
+
+#### 4.1. Lỗi thanh toán
+- Kiểm tra kết nối cổng thanh toán
+- Xác nhận mã giao dịch
+- Đối soát tự động
+- Quy trình xử lý hoàn tiền
+
+#### 4.2. Lỗi đơn hàng
+- Kiểm tra tồn kho thời gian thực
+- Xử lý conflict đặt hàng
+- Cập nhật trạng thái tự động
+- Thông báo cho khách hàng
+
+### 🔧 Xử lý lỗi và sự cố
+
+<details>
+<summary><b>💳 Xử lý lỗi thanh toán</b></summary>
+
+```mermaid
+flowchart TD
+    A[Lỗi thanh toán] --> B{Loại lỗi}
+    B -->|Kết nối| C[Kiểm tra API]
+    B -->|Giao dịch| D[Đối soát]
+    B -->|Hoàn tiền| E[Xử lý hoàn trả]
+    C --> F[Thử lại]
+    D --> G[Xác nhận với cổng thanh toán]
+    E --> H[Cập nhật trạng thái]
+```
+
+#### 🚨 Quy trình xử lý
+
+1. **Kiểm tra ngay:**
+   - 📡 Kết nối API
+   - 🔍 Mã giao dịch
+   - 💰 Số tiền
+
+2. **Thông báo:**
+   - 📱 SMS
+   - 📧 Email
+   - 🔔 App notification
+
+3. **Giải quyết:**
+   - ⚡ Thử lại giao dịch
+   - 🔄 Chuyển phương thức khác
+   - 💸 Xử lý hoàn tiền
 </details>
 
 <details>
-<summary><b>🛍️ Quản lý sản phẩm</b></summary>
+<summary><b>🔍 Theo dõi hệ thống</b></summary>
 
-#### Chức năng đầy đủ:
+<div align="center">
 
-| Tính năng | Mô tả | Quyền hạn |
-|-----------|--------|-----------|
-| ➕ Thêm mới | Tạo sản phẩm mới | Admin only |
-| ✏️ Chỉnh sửa | Cập nhật thông tin | Admin, Staff* |
-| 🗑️ Xóa | Xóa sản phẩm | Admin only |
-| 🖼️ Quản lý ảnh | Upload/Delete ảnh | Admin, Staff |
-| 💰 Giá & KM | Cập nhật giá & khuyến mãi | Admin only |
-| 📦 Kho | Nhập/xuất kho | Admin, Staff |
+| Monitoring | Tools | Alert |
+|------------|-------|-------|
+| 📊 CPU/RAM | Grafana | > 80% |
+| 💾 Disk | Prometheus | > 90% |
+| 🌐 Network | Pingdom | < 95% |
+| 🔐 Security | Wazuh | Real-time |
 
-*Staff chỉ được cập nhật số lượng tồn kho
+</div>
 
-#### Quy trình thêm sản phẩm:
+#### 🚀 Auto-scaling
 
 ```mermaid
-flowchart LR
-    A[Thông tin cơ bản] --> B[Giá & Khuyến mãi]
-    B --> C[Hình ảnh]
-    C --> D[Mô tả chi tiết]
-    D --> E[SEO]
-    E --> F[Lưu & Xuất bản]
+graph TD
+    A[Monitor Load] --> B{CPU > 80%?}
+    B -->|Yes| C[Scale Up]
+    B -->|No| D{CPU < 30%?}
+    D -->|Yes| E[Scale Down]
+    D -->|No| A
+    C --> F[Add Instance]
+    E --> G[Remove Instance]
+    F --> A
+    G --> A
 ```
+
+#### ⚡ Failover Strategy
+
+1. **Phát hiện:**
+   - 🔍 Health check
+   - ⏱️ Response time
+   - 🎯 Error rate
+
+2. **Xử lý:**
+   - 🔄 Auto restart
+   - 🔀 Load balancing
+   - 🚀 Server rotation
+
+3. **Khôi phục:**
+   - 💾 Backup restore
+   - 🔧 Config sync
+   - 📊 Data validation
 
 </details>
 
-<details>
-<summary><b>👥 Quản lý người dùng</b></summary>
-
-#### Phân quyền chi tiết:
-
-| Module | USER | STAFF | ADMIN |
-|--------|------|--------|--------|
-| 🛍️ Mua sắm | ✅ | ✅ | ✅ |
-| 📦 Đơn hàng (xem) | ⚡ Của mình | ✅ Tất cả | ✅ Tất cả |
-| 📦 Đơn hàng (xử lý) | ❌ | ✅ | ✅ |
-| 🛍️ Sản phẩm (xem) | ✅ | ✅ | ✅ |
-| 🛍️ Sản phẩm (sửa) | ❌ | ⚡ Tồn kho | ✅ |
-| 👥 Người dùng | ❌ | ⚡ Xem | ✅ |
-| 💰 Tài chính | ❌ | ⚡ Xem | ✅ |
-| ⚙️ Cấu hình | ❌ | ❌ | ✅ |
-
-> ✅ Full quyền | ⚡ Giới hạn | ❌ Không có quyền
-
-#### Quản lý tài khoản:
-
-- 👀 Xem danh sách người dùng
-- 🔍 Tìm kiếm & lọc
-- 🔒 Khóa/Mở khóa tài khoản
-- 🔑 Reset mật khẩu
-- 📊 Phân tích hành vi
-- 🏆 Phân loại khách hàng (Thường, VIP)
-
-</details>
-
----
-
-## 🔐 Bảo mật & Quyền riêng tư
-
-### 🛡️ Các lớp bảo mật:
-
-```mermaid
-graph TB
-    A[Client Request] --> B[HTTPS/TLS]
-    B --> C[CORS Policy]
-    C --> D[Rate Limiting]
-    D --> E[JWT Validation]
-    E --> F[Role-Based Access]
-    F --> G[Data Encryption]
-    G --> H[Audit Logging]
-    H --> I[Response]
-```
-
-### 🔒 Tính năng bảo mật:
-
-| Tính năng | Công nghệ | Mô tả |
-|-----------|-----------|--------|
-| 🔐 Xác thực | JWT + OAuth2 | Token-based authentication |
-| 🔒 Mã hóa mật khẩu | BCrypt | Mã hóa một chiều |
-| 🛡️ API Security | Spring Security | Role-based access control |
-| 📱 2FA | Google Authenticator | Xác thực 2 yếu tố |
-| 🚫 Rate Limiting | Redis | Chống DDoS |
-| 📝 Audit Log | Database | Ghi log mọi hoạt động |
-
-### 🔑 Quản lý Token:
-
-- **Access Token**: Hết hạn sau 24 giờ
-- **Refresh Token**: Hết hạn sau 7 ngày
-- **Tự động gia hạn**: Khi có hoạt động
-- **Blacklist**: Thu hồi token khi logout
-
----
-
-## 💳 Tích hợp thanh toán
-
-### 🏦 VNPay
-
-```java
-// Cấu hình VNPay
-vnpay.api.url=https://sandbox.vnpayment.vn/paymentv2/vpcpay.html
-vnpay.merchant.id=YOUR_MERCHANT_ID
-vnpay.hash.secret=YOUR_HASH_SECRET
-vnpay.return.url=http://localhost:8080/payment/vnpay/callback
-```
-
-**Quy trình thanh toán:**
-
-```mermaid
-sequenceDiagram
-    participant U as User
-    participant A as App
-    participant V as VNPay
-    participant B as Bank
-    
-    U->>A: Chọn VNPay
-    A->>V: Tạo link thanh toán
-    V->>U: Redirect đến VNPay
-    U->>B: Nhập thông tin thẻ
-    B->>V: Xác thực
-    V->>A: Callback kết quả
-    A->>U: Thông báo kết quả
-```
-
-### 📱 MoMo
-
-```java
-// Cấu hình MoMo
-momo.api.url=https://test-payment.momo.vn/v2/gateway/api/create
-momo.partner.code=YOUR_PARTNER_CODE
-momo.access.key=YOUR_ACCESS_KEY
-momo.secret.key=YOUR_SECRET_KEY
-momo.return.url=http://localhost:8080/payment/momo/callback
-```
-
-**Quy trình thanh toán:**
-
-```mermaid
-sequenceDiagram
-    participant U as User
-    participant A as App
-    participant M as MoMo
-    
-    U->>A: Chọn MoMo
-    A->>M: Tạo QR Code
-    M->>U: Hiển thị QR
-    U->>M: Quét QR & Xác nhận
-    M->>A: Webhook notification
-    A->>U: Thông báo kết quả
-```
-
----
-
-## 📧 Cấu hình Email
-
-### SMTP Settings:
-
-```properties
-# Gmail SMTP
-spring.mail.host=smtp.gmail.com
-spring.mail.port=587
-spring.mail.username=your-email@gmail.com
-spring.mail.password=your-app-password
-spring.mail.properties.mail.smtp.auth=true
-spring.mail.properties.mail.smtp.starttls.enable=true
-spring.mail.properties.mail.smtp.starttls.required=true
-spring.mail.properties.mail.smtp.ssl.trust=smtp.gmail.com
-```
-
-### Email Templates:
-
-| Template | Mô tả | Kích hoạt |
-|----------|--------|-----------|
-| 📧 Welcome | Email chào mừng | Đăng ký thành công |
-| 🔐 OTP | Mã xác thực | Xác thực tài khoản |
-| 📦 Order Confirm | Xác nhận đơn hàng | Đặt hàng thành công |
-| 🚚 Shipping | Thông báo giao hàng | Bắt đầu vận chuyển |
-| ✅ Delivered | Giao hàng thành công | Hoàn thành đơn |
-| 🔄 Refund | Thông báo hoàn tiền | Hủy đơn/Hoàn trả |
-
----
-
-## 🔧 Xử lý lỗi thường gặp
-
-### 🚨 Database Connection Error
-
-**Triệu chứng:**
-```
-Cannot create PoolableConnectionFactory
-```
-
-**Giải pháp:**
-1. Kiểm tra SQL Server đang chạy
-2. Verify connection string trong `application.properties`
-3. Test connection:
-```bash
-sqlcmd -S localhost -U sa -P your_password
-```
-
-### 💳 Payment Gateway Error
-
-**Triệu chứng:**
-```
-Payment callback failed / Invalid signature
-```
-
-**Giải pháp:**
-1. Kiểm tra API credentials
-2. Verify callback URL
-3. Check hash secret key
-4. Review payment logs:
-```bash
-tail -f logs/payment.log
-```
-
-### 📁 File Upload Error
-
-**Triệu chứng:**
-```
-Maximum upload size exceeded
-```
-
-**Giải pháp:**
-1. Tăng giới hạn trong `application.properties`:
-```properties
-spring.servlet.multipart.max-file-size=20MB
-spring.servlet.multipart.max-request-size=20MB
-```
-2. Kiểm tra quyền thư mục `uploads/`
-3. Verify disk space
-
-### 🔐 JWT Token Error
-
-**Triệu chứng:**
-```
-Token expired / Invalid token
-```
-
-**Giải pháp:**
-1. Xóa token cũ và đăng nhập lại
-2. Check token expiration time
-3. Verify JWT secret key
-
----
-
-## 📊 Monitoring & Logging
-
-### 📝 Log Levels:
-
-```properties
-# Application Logs
-logging.level.root=INFO
-logging.level.com.petshop=DEBUG
-logging.level.org.springframework.web=DEBUG
-logging.level.org.hibernate.SQL=DEBUG
-
-# Log Files
-logging.file.name=logs/petshop.log
-logging.file.max-size=10MB
-logging.file.max-history=30
-```
-
-### 📈 Metrics & Health Check:
-
-```yaml
-# Actuator Endpoints
-management:
-  endpoints:
-    web:
-      exposure:
-        include: health,info,metrics,prometheus
-  endpoint:
-    health:
-      show-details: always
-```
-
-**Access:**
-- Health: http://localhost:8080/actuator/health
-- Metrics: http://localhost:8080/actuator/metrics
-- Prometheus: http://localhost:8080/actuator/prometheus
-
----
-
-## 🐳 Docker Deployment
-
-### Dockerfile:
-
-```dockerfile
-FROM openjdk:8-jdk-alpine
-VOLUME /tmp
-COPY target/pet-shop-1.0.0.jar app.jar
-ENTRYPOINT ["java","-jar","/app.jar"]
-EXPOSE 8080
-```
-
-### Docker Compose:
-
-```yaml
-version: '3.8'
-
-services:
-  petshop-app:
-    build: .
-    ports:
-      - "8080:8080"
-    environment:
-      - SPRING_DATASOURCE_URL=jdbc:sqlserver://sqlserver:1433;databaseName=DTA_PET
-      - SPRING_DATASOURCE_USERNAME=sa
-      - SPRING_DATASOURCE_PASSWORD=YourStrong@Passw0rd
-    depends_on:
-      - sqlserver
-      
-  sqlserver:
-    image: mcr.microsoft.com/mssql/server:2019-latest
-    environment:
-      - ACCEPT_EULA=Y
-      - SA_PASSWORD=YourStrong@Passw0rd
-    ports:
-      - "1433:1433"
-    volumes:
-      - sqlserver-data:/var/opt/mssql
-
-volumes:
-  sqlserver-data:
-```
-
-**Chạy với Docker:**
-```bash
-docker-compose up -d
-```
-
----
-
-## 🧪 Testing
-
-### Unit Tests:
-
-```bash
-mvn test
-```
-
-### Integration Tests:
-
-```bash
-mvn verify
-```
-
-### Coverage Report:
-
-```bash
-mvn clean test jacoco:report
-```
-
-Xem report tại: `target/site/jacoco/index.html`
-
----
-
-## 📱 API Documentation
-
-### Swagger UI:
-
-Truy cập: http://localhost:8080/swagger-ui.html
-
-### Postman Collection:
-
-Import file: `docs/PetShop-API.postman_collection.json`
-
-### API Endpoints chính:
-
-| Category | Method | Endpoint | Auth |
-|----------|--------|----------|------|
-| 🔐 Auth | POST | `/api/auth/register` | ❌ |
-| 🔐 Auth | POST | `/api/auth/login` | ❌ |
-| 🛍️ Product | GET | `/api/products` | ❌ |
-| 🛍️ Product | POST | `/api/products` | ✅ Admin |
-| 🛒 Cart | POST | `/api/cart/add` | ✅ User |
-| 📦 Order | POST | `/api/orders` | ✅ User |
-| 💳 Payment | POST | `/api/payment/vnpay` | ✅ User |
-| 👥 User | GET | `/api/users` | ✅ Admin |
-
----
-
-## 🔄 CI/CD Pipeline
-
-### GitHub Actions:
-
-```yaml
-name: CI/CD Pipeline
-
-on:
-  push:
-    branches: [ main, develop ]
-  pull_request:
-    branches: [ main ]
-
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    
-    steps:
-    - uses: actions/checkout@v2
-    
-    - name: Set up JDK 8
-      uses: actions/setup-java@v2
-      with:
-        java-version: '8'
-        
-    - name: Build with Maven
-      run: mvn clean install
-      
-    - name: Run tests
-      run: mvn test
-      
-    - name: Build Docker image
-      run: docker build -t petshop:latest .
-      
-    - name: Push to Registry
-      run: docker push petshop:latest
-```
-
----
-
-## 🎯 Roadmap
-
-### 🚀 Version 2.0 (Q2 2025)
-
-- [ ] 🤖 Chatbot AI hỗ trợ khách hàng
-- [ ] 📱 Mobile App (iOS & Android)
-- [ ] 🔔 Push Notification system
-- [ ] 📊 Advanced Analytics Dashboard
-- [ ] 🌍 Multi-language support
-
-### 🔮 Version 2.5 (Q3 2025)
-
-- [ ] 🎯 Recommendation Engine (AI-powered)
-- [ ] 🏆 Loyalty Program & Points
-- [ ] 📹 Live Stream Shopping
-- [ ] 🎁 Gift Card & Voucher System
-- [ ] 💬 Social Commerce Integration
-
-### ✨ Version 3.0 (Q4 2025)
-
-- [ ] 🌐 Multi-vendor Marketplace
-- [ ] 🚀 Microservices Architecture
-- [ ] ☁️ Cloud-native Deployment
-- [ ] 🔐 Blockchain Integration (Payment)
-- [ ] 🎮 Gamification Features
-
----
-
-## 📖 Database Schema
-
-### 🗄️ Sơ đồ quan hệ chính:
-
-```mermaid
-erDiagram
-    USER ||--o{ ORDER : places
-    USER ||--o{ CART : has
-    USER ||--o{ REVIEW : writes
-    USER {
-        bigint id PK
-        string email UK
-        string password
-        string full_name
-        string phone
-        enum role
-        boolean active
-        datetime created_at
-    }
-    
-    PRODUCT ||--o{ ORDER_ITEM : contains
-    PRODUCT ||--o{ CART_ITEM : contains
-    PRODUCT ||--o{ REVIEW : has
-    PRODUCT }o--|| CATEGORY : belongs_to
-    PRODUCT {
-        bigint id PK
-        string name
-        string sku UK
-        decimal price
-        decimal sale_price
-        int stock_quantity
-        bigint category_id FK
-        text description
-        boolean active
-    }
-    
-    ORDER ||--|{ ORDER_ITEM : contains
-    ORDER ||--|| PAYMENT : has
-    ORDER {
-        bigint id PK
-        string order_number UK
-        bigint user_id FK
-        decimal total_amount
-        enum status
-        enum payment_method
-        string shipping_address
-        datetime created_at
-    }
-    
-    ORDER_ITEM {
-        bigint id PK
-        bigint order_id FK
-        bigint product_id FK
-        int quantity
-        decimal price
-        decimal subtotal
-    }
-    
-    CART ||--|{ CART_ITEM : contains
-    CART {
-        bigint id PK
-        bigint user_id FK
-        datetime updated_at
-    }
-    
-    CART_ITEM {
-        bigint id PK
-        bigint cart_id FK
-        bigint product_id FK
-        int quantity
-    }
-    
-    CATEGORY ||--o{ PRODUCT : has
-    CATEGORY ||--o{ CATEGORY : parent_child
-    CATEGORY {
-        bigint id PK
-        string name
-        string slug UK
-        bigint parent_id FK
-        int sort_order
-        boolean active
-    }
-    
-    PAYMENT {
-        bigint id PK
-        bigint order_id FK
-        string transaction_id UK
-        enum payment_method
-        decimal amount
-        enum status
-        text response_data
-        datetime paid_at
-    }
-    
-    REVIEW {
-        bigint id PK
-        bigint product_id FK
-        bigint user_id FK
-        int rating
-        text comment
-        boolean verified_purchase
-        datetime created_at
-    }
-```
-
-### 📊 Indexes quan trọng:
-
-```sql
--- User indexes
-CREATE INDEX idx_user_email ON USER(email);
-CREATE INDEX idx_user_role ON USER(role);
-
--- Product indexes
-CREATE INDEX idx_product_category ON PRODUCT(category_id);
-CREATE INDEX idx_product_sku ON PRODUCT(sku);
-CREATE INDEX idx_product_active ON PRODUCT(active);
-
--- Order indexes
-CREATE INDEX idx_order_user ON ORDER(user_id);
-CREATE INDEX idx_order_status ON ORDER(status);
-CREATE INDEX idx_order_created_at ON ORDER(created_at);
-CREATE INDEX idx_order_number ON ORDER(order_number);
-
--- Payment indexes
-CREATE INDEX idx_payment_order ON PAYMENT(order_id);
-CREATE INDEX idx_payment_transaction ON PAYMENT(transaction_id);
-CREATE INDEX idx_payment_status ON PAYMENT(status);
-```
-
----
-
-## 🎨 Frontend Structure
-
-### 📁 Thư mục dự án:
-
-```
-pet-shop/
-├── 📂 src/
-│   ├── 📂 main/
-│   │   ├── 📂 java/
-│   │   │   └── 📂 com/petshop/
-│   │   │       ├── 📂 controller/      # REST Controllers
-│   │   │       ├── 📂 service/         # Business Logic
-│   │   │       ├── 📂 repository/      # Data Access Layer
-│   │   │       ├── 📂 model/           # Entity Models
-│   │   │       ├── 📂 dto/             # Data Transfer Objects
-│   │   │       ├── 📂 config/          # Configurations
-│   │   │       ├── 📂 security/        # Security & JWT
-│   │   │       ├── 📂 util/            # Utilities
-│   │   │       └── 📂 exception/       # Custom Exceptions
-│   │   ├── 📂 resources/
-│   │   │   ├── 📂 static/
-│   │   │   │   ├── 📂 css/
-│   │   │   │   ├── 📂 js/
-│   │   │   │   └── 📂 images/
-│   │   │   ├── 📂 templates/           # Thymeleaf Templates
-│   │   │   │   ├── 📂 customer/        # Customer Views
-│   │   │   │   ├── 📂 admin/           # Admin Dashboard
-│   │   │   │   ├── 📂 staff/           # Staff Panel
-│   │   │   │   └── 📂 shared/          # Shared Components
-│   │   │   └── application.properties
-│   │   └── 📂 webapp/
-│   │       └── 📂 uploads/             # User Uploads
-│   └── 📂 test/                        # Unit & Integration Tests
-├── 📂 docs/                            # Documentation
-├── 📂 scripts/                         # Deployment Scripts
-├── 📄 pom.xml                          # Maven Dependencies
-├── 📄 Dockerfile
-├── 📄 docker-compose.yml
-└── 📄 README.md
-```
-
----
-
-## 🔒 Security Best Practices
-
-### ✅ Checklist:
-
-- [x] 🔐 **Password Hashing**: BCrypt với salt rounds = 12
-- [x] 🔑 **JWT Security**: Signed tokens với secret key
-- [x] 🛡️ **CORS Protection**: Whitelist trusted domains
-- [x] 🚫 **SQL Injection**: Prepared statements với JPA
-- [x] 🔒 **XSS Prevention**: Input sanitization
-- [x] 🔐 **CSRF Protection**: CSRF tokens cho forms
-- [x] 📝 **Audit Logging**: Log mọi critical actions
-- [x] 🚦 **Rate Limiting**: API throttling
-- [x] 🔍 **Input Validation**: Bean Validation (JSR-303)
-- [x] 🔐 **HTTPS Only**: Force SSL/TLS
-
-### 🛡️ Security Headers:
-
-```java
-@Configuration
-public class SecurityConfig extends WebSecurityConfigurerAdapter {
-    
-    @Override
-    protected void configure(HttpSecurity http) throws Exception {
-        http
-            .headers()
-                .contentSecurityPolicy("default-src 'self'")
-                .and()
-                .xssProtection()
-                .and()
-                .frameOptions().deny()
-                .and()
-                .httpStrictTransportSecurity()
-                    .maxAgeInSeconds(31536000)
-                    .includeSubDomains(true);
-    }
-}
-```
-
----
-
-## 🌟 Performance Optimization
-
-### ⚡ Caching Strategy:
-
-```mermaid
-graph LR
-    A[Request] --> B{Cache?}
-    B -->|Hit| C[Return Cached]
-    B -->|Miss| D[Query DB]
-    D --> E[Update Cache]
-    E --> F[Return Data]
-```
-
-### 🚀 Optimization Tips:
-
-| Kỹ thuật | Mô tả | Hiệu quả |
-|----------|--------|----------|
-| 💾 Redis Cache | Cache product, category data | ⬆️ 70% |
-| 🗜️ Compression | Gzip response data | ⬆️ 60% |
-| 🖼️ Image Optimization | WebP format, lazy loading | ⬆️ 50% |
-| 📦 DB Indexing | Proper indexes on queries | ⬆️ 80% |
-| 🔄 Connection Pooling | HikariCP configuration | ⬆️ 40% |
-| ⚡ Async Processing | Non-blocking operations | ⬆️ 65% |
-
-### 📊 Performance Metrics:
-
-```properties
-# HikariCP Configuration
-spring.datasource.hikari.maximum-pool-size=20
-spring.datasource.hikari.minimum-idle=5
-spring.datasource.hikari.connection-timeout=30000
-spring.datasource.hikari.idle-timeout=600000
-spring.datasource.hikari.max-lifetime=1800000
-
-# Redis Cache
-spring.cache.type=redis
-spring.redis.host=localhost
-spring.redis.port=6379
-spring.cache.redis.time-to-live=3600000
-```
-
----
-
-## 📚 Code Quality
-
-### 🎯 Code Standards:
-
-- ✅ **Java Code Conventions**
-- ✅ **SOLID Principles**
-- ✅ **Clean Code Practices**
-- ✅ **Design Patterns**: Factory, Builder, Repository
-- ✅ **Code Review**: Mandatory PR reviews
-- ✅ **Documentation**: JavaDoc for public APIs
-
-### 🧹 Static Analysis:
-
-```xml
-<!-- SonarQube Plugin -->
-<plugin>
-    <groupId>org.sonarsource.scanner.maven</groupId>
-    <artifactId>sonar-maven-plugin</artifactId>
-    <version>3.9.1.2184</version>
-</plugin>
-```
-
-**Run analysis:**
-```bash
-mvn clean verify sonar:sonar
-```
-
-### ✅ Code Coverage:
-
-Target: **>= 80% coverage**
-
-```bash
-mvn clean test jacoco:report
-```
-
----
-
-## 🌍 Internationalization (i18n)
-
-### 🗣️ Supported Languages:
-
-| Language | Code | Status |
-|----------|------|--------|
-| 🇻🇳 Tiếng Việt | `vi_VN` | ✅ Default |
-| 🇺🇸 English | `en_US` | ✅ Available |
-| 🇯🇵 日本語 | `ja_JP` | 🔄 Coming soon |
-| 🇰🇷 한국어 | `ko_KR` | 🔄 Coming soon |
-
-### 📝 Message Files:
-
-```properties
-# messages_vi_VN.properties
-app.title=Cửa Hàng Thú Cưng
-app.welcome=Chào mừng bạn đến với Pet Shop
-
-# messages_en_US.properties
-app.title=Pet Shop
-app.welcome=Welcome to Pet Shop
-```
-
----
-
-## 🤝 Contributing
-
-### 💻 Quy trình đóng góp:
-
-```mermaid
-graph LR
-    A[Fork Repository] --> B[Create Branch]
-    B --> C[Make Changes]
-    C --> D[Write Tests]
-    D --> E[Commit]
-    E --> F[Push to Fork]
-    F --> G[Create PR]
-    G --> H[Code Review]
-    H --> I{Approved?}
-    I -->|Yes| J[Merge]
-    I -->|No| C
-```
-
-### 📋 Commit Message Convention:
-
-```bash
-# Format
-<type>(<scope>): <subject>
-
-# Types
-feat: New feature
-fix: Bug fix
-docs: Documentation
-style: Formatting
-refactor: Code restructuring
-test: Adding tests
-chore: Maintenance
-
-# Examples
-feat(auth): add OAuth2 login
-fix(payment): resolve VNPay callback issue
-docs(readme): update installation guide
-```
-
-### 🎨 Pull Request Template:
-
-```markdown
-## 📝 Description
-Brief description of changes
-
-## 🎯 Type of Change
-- [ ] Bug fix
-- [ ] New feature
-- [ ] Breaking change
-- [ ] Documentation update
-
-## ✅ Checklist
-- [ ] Code follows style guidelines
-- [ ] Self-review completed
-- [ ] Tests added/updated
-- [ ] Documentation updated
-- [ ] No new warnings
-```
-
----
-
-## 📞 Hỗ trợ và liên hệ
-
-### 🆘 Kênh hỗ trợ:
+### 📞 Hỗ trợ và liên hệ
 
 <div align="center">
 
-| Kênh | Thông tin | Thời gian phản hồi |
-|------|-----------|-------------------|
-| 📧 **Email** | support@petshop.com | 24/7 - trong 2h |
-| 💬 **Live Chat** | Website | 8AM-10PM - tức thì |
-| ☎️ **Hotline** | 1800-xxxx | 8AM-10PM - tức thì |
-| 📱 **Zalo** | @petshop_official | 8AM-9PM - trong 30 phút |
-| 💼 **LinkedIn** | linkedin.com/company/petshop | 1-2 ngày làm việc |
-| 🐙 **GitHub Issues** | github.com/petshop/issues | 1-3 ngày |
+| Kênh | Thông tin | Thời gian |
+|------|-----------|-----------|
+| 📧 Email | support@petshop.com | 24/7 |
+| ☎️ Hotline | 1800-xxxx | 8AM-10PM |
+| 💬 Live Chat | Website/App | 24/7 |
+| 📱 Zalo | @petshop | 8AM-9PM |
 
 </div>
 
-### 📮 Liên hệ Development Team:
-
-- 👨‍💻 **Tech Lead**: caongocthien1902@gmail.com
-- 🎨 **UI/UX Designer**: design@petshop.com
-- 🔐 **Security Team**: security@petshop.com
-- 📊 **DevOps**: devops@petshop.com
-
-### 🐛 Báo lỗi (Bug Report):
-
-1. Truy cập: https://github.com/petshop/issues
-2. Click **"New Issue"**
-3. Chọn template **"Bug Report"**
-4. Điền đầy đủ thông tin:
-   - ✅ Mô tả lỗi chi tiết
-   - ✅ Các bước tái hiện
-   - ✅ Expected vs Actual behavior
-   - ✅ Screenshots (nếu có)
-   - ✅ Environment info
-   - ✅ Log files
-
-### 💡 Đề xuất tính năng (Feature Request):
-
-1. Kiểm tra roadmap hiện tại
-2. Tìm kiếm feature requests có sẵn
-3. Tạo issue mới với template **"Feature Request"**
-4. Mô tả chi tiết use case và benefits
+> 💡 **Thời gian phản hồi:**
+> - ⚡ Khẩn cấp: 15 phút
+> - 🔄 Thông thường: 2 giờ
+> - 📝 Góp ý: 24 giờ
 
 ---
-
-## 📜 License
-
-```
-MIT License
-
-Copyright (c) 2024 Pet Shop Application
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-```
-
----
-
-## 🎓 Learning Resources
-
-### 📚 Documentation:
-
-- 📖 [Spring Boot Documentation](https://spring.io/projects/spring-boot)
-- 🔐 [Spring Security Reference](https://docs.spring.io/spring-security/reference/)
-- 💾 [Hibernate ORM Guide](https://hibernate.org/orm/documentation/)
-- 🐳 [Docker Documentation](https://docs.docker.com/)
-
-### 🎥 Video Tutorials:
-
-- 🎬 [Spring Boot Crash Course](https://youtube.com/springboot)
-- 🎬 [Microservices Architecture](https://youtube.com/microservices)
-- 🎬 [Docker & Kubernetes](https://youtube.com/devops)
-
-### 📝 Blog Posts:
-
-- ✍️ [Building Scalable E-commerce Apps](https://blog.petshop.com/scalable-apps)
-- ✍️ [Payment Gateway Integration](https://blog.petshop.com/payment-integration)
-- ✍️ [Securing Spring Boot Apps](https://blog.petshop.com/spring-security)
-
----
-
-## 🏆 Credits & Acknowledgments
-
-### 👥 Core Team:
-
 <div align="center">
 
-| Role | Name | Contact |
-|------|------|---------|
-| 🎯 **Project Lead** | Cao Ngọc Thiện | caongocthien1902@gmail.com |
-| 💻 **Backend Developer** | Development Team | dev@petshop.com |
-| 🎨 **UI/UX Designer** | Design Team | design@petshop.com |
-| 🧪 **QA Engineer** | Testing Team | qa@petshop.com |
-| 📝 **Technical Writer** | Documentation Team | docs@petshop.com |
+### 🌟 Cảm ơn bạn đã sử dụng Pet Shop! 🐾
 
 </div>
 
-### 🌟 Special Thanks:
-
-- ☕ Spring Boot Community
-- 🐘 Hibernate Team
-- 🔐 Spring Security Team
-- 💳 VNPay & MoMo Developer Teams
-- 🐳 Docker Community
-- 🎓 Stack Overflow Community
-
-### 🔧 Tools & Technologies:
-
-Built with ❤️ using:
-
-- ☕ **Java 8+**
-- 🍃 **Spring Boot 2.x**
-- 🐘 **Hibernate ORM**
-- 🗄️ **SQL Server**
-- 💾 **Redis**
-- 🐳 **Docker**
-- 📊 **Maven**
-- 🎨 **Thymeleaf**
-- 🔐 **JWT**
-- 💳 **VNPay & MoMo API**
-
----
-
-## 📈 Statistics
-
-<div align="center">
-
-### 📊 Project Status
-
-![GitHub stars](https://img.shields.io/github/stars/petshop/petshop?style=social)
-![GitHub forks](https://img.shields.io/github/forks/petshop/petshop?style=social)
-![GitHub watchers](https://img.shields.io/github/watchers/petshop/petshop?style=social)
-
-![GitHub issues](https://img.shields.io/github/issues/petshop/petshop)
-![GitHub pull requests](https://img.shields.io/github/issues-pr/petshop/petshop)
-![GitHub contributors](https://img.shields.io/github/contributors/petshop/petshop)
-
-![Code size](https://img.shields.io/github/languages/code-size/petshop/petshop)
-![Lines of code](https://img.shields.io/tokei/lines/github/petshop/petshop)
-![GitHub last commit](https://img.shields.io/github/last-commit/petshop/petshop)
-
-</div>
-
----
-
-## 🎉 Changelog
-
-### Version 1.0.0 (2024-01-15)
-
-#### ✨ Features:
-- 🔐 User authentication & authorization
-- 🛍️ Product catalog & management
-- 🛒 Shopping cart functionality
-- 💳 Multiple payment methods (VNPay, MoMo, COD)
-- 📦 Order management system
-- 👥 User profile management
-- ⭐ Product review & rating
-- 📧 Email notification system
-- 📱 Responsive design
-- 🔍 Advanced search & filtering
-
-#### 🐛 Bug Fixes:
-- Fixed payment callback issues
-- Resolved cart synchronization problems
-- Fixed image upload limitations
-
-#### 🔒 Security:
-- Implemented JWT authentication
-- Added rate limiting
-- Enhanced password encryption
-- CSRF protection
-
----
-
-<div align="center">
-
-## ⭐ Support This Project
-
-If you find this project helpful, please consider:
-
-- ⭐ Starring the repository
-- 🐛 Reporting bugs
-- 💡 Suggesting new features
-- 📖 Improving documentation
-- 🤝 Contributing code
-
----
-
-### 🚀 Made with ❤️ by Pet Shop Team
-
-**🐾 Happy Coding! 🐾**
-
-![Footer Image](https://img.shields.io/badge/Thank%20You-For%20Using%20Pet%20Shop-brightgreen?style=for-the-badge)
-
-</div>
+## Hỗ trợ và liên hệ
+Nếu có bất kỳ vấn đề hoặc câu hỏi nào, vui lòng liên hệ:
+- Email: caongocthien1902@gmail.com
